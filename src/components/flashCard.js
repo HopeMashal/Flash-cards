@@ -15,6 +15,7 @@ class FlashCard extends React.Component {
     resultText:'',
     Btn:'none',
     BtnNext:'',
+    BtnText:'Start',
     bg:`linear-gradient(rgba(87, 226, 226, 0.7), rgba(255, 255, 255, 0.7)),url(${Card}) no-repeat 50% 50%`,
     bgB:`linear-gradient(rgba(87, 226, 226, 0.7), rgba(255, 255, 255, 0.7))`,
   };
@@ -28,7 +29,7 @@ class FlashCard extends React.Component {
   };
   nextCard = () => {
     if (this.state.currentItem + 1 <= this.state.numOfItems) {
-      this.setState({ currentItem: this.state.currentItem+1,result:'none' })
+      this.setState({ currentItem: this.state.currentItem+1,result:'none',BtnText:'Next Card' })
       this.renderCard();
     } else {
       this.setState({Btn:'block',BtnNext:'none'});
@@ -85,7 +86,7 @@ class FlashCard extends React.Component {
             <div>
               <br/>
               <button className="next-btn" style={{display:this.state.BtnNext}} onClick={this.nextCard}>
-                next card
+                {this.state.BtnText}
               </button>
               <div className="result" style={{display:this.state.result}}>
                 <h4>Did you get it right?</h4>
